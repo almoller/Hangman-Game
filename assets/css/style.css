@@ -1,7 +1,11 @@
-/*body {
+body {
     background-image: url("../images/purty_wood.png");
-}*/
+}
 
 .jumbotron {
     background-image: url("../images/gplaypattern.png");
+}
+
+#current_word {
+    font-size: 36pt !important;
 }

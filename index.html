@@ -23,18 +23,29 @@
 
     <div class="container">
 
-        <div class="row">
-            <div class="col text-center bg-info text-white mb-3 pt-3">
-                <p>Game Stats Here</p>
+        <div class="row bg-info text-white mb-3 pt-3">
+            <div class="col-sm-6 text-center">
+                <p class="mb-1">Number of Turns Remaining:</p>
+                <p id="turnCount" class="mt-1"></p>
+            </div>
+            <div class="col-sm-3 text-center">
+                <p class="mb-1">Wins:</p>
+                <p id="winCount" class="mt-1"></p>
+            </div>
+            <div class="col-sm-3 text-center">
+                <p class="mb-1">Losses</p>
+                <p id="lossCount" class="mt-1"></p>
             </div>
         </div>
 
         <div class="row">
-            <div class="col bg-danger py-5 text-center">
-                <button>change background</button>
+            <div class="col-sm-6 bg-danger py-5 ml-sm-3 text-center">
+                <h3>Current Word</h3>
+                <p id="current_word" class="my-5"></p>
+                <h4 class="border-bottom border-dark mx-5 mt-2 pb-2">Letters Guessed</h4>
             </div>
-            <div class="col bg-primary ml-2">
-                <p>info and controls for the game here</p>
+            <div class="col-sm-5 bg-primary ml-sm-4 mt-3 mt-sm-0 py-5">
+                
             </div>
         </div>
     </div>
