@@ -2,7 +2,9 @@ document.addEventListener("keyup", gameStart);
 
 function gameStart() {
     console.log("key pressed to begin");
-
+    
+    var changeHeadingP = document.getElementById("startAction").style.visibility = ("hidden");
+        
 
     var wordArray = [
         "MOUNTAIN",
@@ -17,7 +19,7 @@ function gameStart() {
         "MEADOW"
     ];
 
-    //var wordIndex = 0;
+    var lettersGuessed = [];
     var turnCount = 10;
     var winCount = 0;
     var lossCount = 0;
@@ -47,7 +49,7 @@ function gameStart() {
 
     //// Select word and display it as "_ _ _ _ _"
 
-    //function renderWord() {
+
         var word = wordArray[Math.floor(Math.random() * wordArray.length)]; console.log("The word is: " + word);
         var currentWord = document.getElementById("current_word");
 
@@ -62,20 +64,16 @@ function gameStart() {
         currentWord.appendChild(new_word);
         currentWord.setAttribute("style", "color:#fff");
 
-    //}
-
-
-
+    //// Guess letters and compare the result
     document.onkeyup = function (gamePlay) {
         var userInput = gamePlay.which;
 
-        if (userInput >= 65 && userInput <= 90) {
+        if (userInput >= 65 && userInput <= 90 && turnCount > 0) {
             console.log("Selection = " + String.fromCharCode(userInput));
             for (i = 0; i < word.length; i++) {
 
-                if (String.fromCharCode(userInput) === word[0]) {
+                if (String.fromCharCode(userInput) == word[i]) {
                     console.log(String.fromCharCode(userInput) + " is in the current word");
-
                     
                 }
                 else {
@@ -87,15 +85,13 @@ function gameStart() {
             updateTurn();
 
         }
+        //else if (turnCount = 0) {
+        //    alert("GAME OVER");
+        //}
         else {
             alert("Please only use letter keys...");
         }
-
-
     }
-
-
-
 
 
     removeHandler();
@@ -105,6 +101,34 @@ function gameStart() {
 function removeHandler() {
     document.removeEventListener("keyup", gameStart);
 }
+
+////----HERE IS SOME OF WHAT I STILL NEED TO GET WORKING----\\\\
+/*
+I need to fix bugs in selecting/checking if the letter guess is in the current word.
+If  letter is in the word: 
+    Place the letter in the correct spot on the word
+If letter is in word && all word spaces are filled:
+    -Display "You win..."
+    -Increase winCount by 1
+    -display control asking to "Play again..."
+If wrong & turns remain (turnCount > 0):
+    -add guessed letter to the lettersGuessed array
+    -add a corrosponding "wrong Image" in the right column of the page
+if wrong & no turns remain (turnCount = 0):
+    -Display "Game Over"
+    -Increase lossCount by 1
+    -display control asking to "Play again..."
+for restart:
+    -make sure game logic & UI are reset then display new word
+*/
+
+
+
+
+
+
+
+
 
 
 
