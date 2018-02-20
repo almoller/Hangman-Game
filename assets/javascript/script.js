@@ -67,20 +67,32 @@ function gameStart() {
     //// Guess letters and compare the result
     document.onkeyup = function (gamePlay) {
         var userInput = gamePlay.which;
+        var codeTOstring = String.fromCharCode(userInput);
 
         if (userInput >= 65 && userInput <= 90 && turnCount > 0) {
-            console.log("Selection = " + String.fromCharCode(userInput));
-            for (i = 0; i < word.length; i++) {
+            console.log("Selection = " + codeTOstring);
 
-                if (String.fromCharCode(userInput) == word[i]) {
-                    console.log(String.fromCharCode(userInput) + " is in the current word");
-                    
+            for (i = 0; i < word.length; i++) {
+                if (codeTOstring == word[i]) {       //console.log(codeTOstring + " is in the current word");
+                    word_display[i] = codeTOstring;  //console.log(word_display); 
+                    new_word_display = word_display.join(""); console.log(new_word_display);
+                    new_word.innerHTML = new_word_display;
+
+                    if (new_word_display === word) {
+                        new_word.innerHTML = new_word_display + " -- You Win!";
+                        winCount++;
+                        updateWin();
+                    }
+
                 }
                 else {
-                    console.log(String.fromCharCode(userInput) + " is NOT in the current word");
+                    //cconsole.log(String.fromCharCode(userInput) + " is NOT in the current word");
 
                 }
+
+                
             }
+            
             turnCount--;
             updateTurn();
 
@@ -91,6 +103,8 @@ function gameStart() {
         else {
             alert("Please only use letter keys...");
         }
+
+        
     }
 
 
@@ -105,6 +119,7 @@ function removeHandler() {
 ////----HERE IS SOME OF WHAT I STILL NEED TO GET WORKING----\\\\
 /*
 I need to fix bugs in selecting/checking if the letter guess is in the current word.
+xx(done 2/18) 
 If  letter is in the word: 
     Place the letter in the correct spot on the word
 If letter is in word && all word spaces are filled:
