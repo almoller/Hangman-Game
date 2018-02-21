@@ -20,7 +20,7 @@ function gameStart() {
     ];
 
     var lettersGuessed = [];
-    var turnCount = 10;
+    var turnCount = 15;
     var winCount = 0;
     var lossCount = 0;
 
@@ -38,6 +38,10 @@ function gameStart() {
     }
     function updateLoss() {
         document.querySelector("#lossCount").innerHTML = lossCount;
+    }
+
+    function updateLettersGuessed() {
+        document.querySelector("#lettersGuessed").innerHTML = lettersGuessed.join("   ");
     }
 
 
@@ -71,6 +75,7 @@ function gameStart() {
 
         if (userInput >= 65 && userInput <= 90 && turnCount > 0) {
             console.log("Selection = " + codeTOstring);
+            lettersGuessed.push(codeTOstring);
 
             for (i = 0; i < word.length; i++) {
                 if (codeTOstring == word[i]) {       //console.log(codeTOstring + " is in the current word");
@@ -86,6 +91,7 @@ function gameStart() {
 
                 }
                 else {
+                    updateLettersGuessed();
                     //cconsole.log(String.fromCharCode(userInput) + " is NOT in the current word");
 
                 }

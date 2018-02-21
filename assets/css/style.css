@@ -9,3 +9,7 @@ body {
 #current_word {
     font-size: 36pt !important;
 }
+
+#lettersGuessed {
+    color: #fff;
+}
